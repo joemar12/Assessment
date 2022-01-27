@@ -2,6 +2,7 @@
 using Assessment2.Facade;
 using Assessment2.Factory;
 using Assessment2.Singleton;
+using Assessment2.Strategy;
 using System;
 using Xunit;
 namespace Assessment.Tests
@@ -69,6 +70,17 @@ namespace Assessment.Tests
             subscriptionService.ProcessSubscription(1, "any");
             var customer = customerRepo.GetCustomer(1);
             Assert.True(customer.Subscription.IsActive);
+        }
+
+        [Fact]
+        public void PaymentService_Should_Process_Payments_Using_Correct_Strategy()
+        {
+            var paymentService = new PaymentProcessingService(new CashPaymentProcessor());
+            var result1 = paymentService.ProcessPayment();
+            paymentService = new PaymentProcessingService(new CardPaymentProcessor());
+            var result2 = paymentService.ProcessPayment();
+            Assert.Equal("Paid with cash", result1);
+            Assert.Equal("Paid with card", result2);
         }
     }
 }
