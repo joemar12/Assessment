@@ -1,6 +1,4 @@
-﻿using Assessment2.Models;
-
-namespace Assessment2.AbstractFactory
+﻿namespace Assessment2.AbstractFactory
 {
     public class MilkywayCelestialBodyFactory : ICelestialBodyFactory
     {

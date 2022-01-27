@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Assessment2.Models
+namespace Assessment2.Factory
 {
     public interface IDocument
     {

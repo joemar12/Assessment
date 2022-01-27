@@ -1,4 +1,4 @@
-﻿namespace Assessment2.Models
+﻿namespace Assessment2.Factory
 {
     public class TaxReport : IDocument
     {

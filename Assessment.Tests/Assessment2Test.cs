@@ -1,6 +1,6 @@
 ﻿using Assessment2.AbstractFactory;
+using Assessment2.Facade;
 using Assessment2.Factory;
-using Assessment2.Models;
 using Assessment2.Singleton;
 using System;
 using Xunit;
@@ -59,6 +59,16 @@ namespace Assessment.Tests
             var planet = client.GetPlanet();
             Assert.IsType<SuperEarth>(planet);
             Assert.IsType<NeutronStar>(star);
+        }
+
+        [Fact]
+        public void SubscriptionService_Should_Subscribe_Customer()
+        {
+            var customerRepo = new CustomerRepository();
+            var subscriptionService = new SubscriptionService(customerRepo, new PaymentService());
+            subscriptionService.ProcessSubscription(1, "any");
+            var customer = customerRepo.GetCustomer(1);
+            Assert.True(customer.Subscription.IsActive);
         }
     }
 }

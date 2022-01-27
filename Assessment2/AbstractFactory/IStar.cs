@@ -1,9 +1,8 @@
-﻿namespace Assessment2.Models
+﻿namespace Assessment2.AbstractFactory
 {
     public interface IStar
     {
         string Name { get; set; }
         double Diameter { get; set; }
     }
-
 }
