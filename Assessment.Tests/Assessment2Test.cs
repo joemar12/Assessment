@@ -1,4 +1,5 @@
-﻿using Assessment2.Factory;
+﻿using Assessment2.AbstractFactory;
+using Assessment2.Factory;
 using Assessment2.Models;
 using Assessment2.Singleton;
 using System;
@@ -38,6 +39,26 @@ namespace Assessment.Tests
             var factory = new CertificateOfEmploymentFactory();
             var doc = factory.CreateDocument();
             Assert.IsType<CertificateOfEmployment>(doc);
+        }
+
+        [Fact]
+        public void MilkywayCelestialBodyFactory_Should_Create_RedDwarf_And_GasGiant()
+        {
+            var client = new CelestialBodyClient(new MilkywayCelestialBodyFactory());
+            var star = client.GetStar();
+            var planet = client.GetPlanet();
+            Assert.IsType<GasGiant>(planet);
+            Assert.IsType<RedDwarf>(star);
+        }
+
+        [Fact]
+        public void AndromedaCelestialBodyFactory_Should_Create_NeutronStar_And_SuperEarth()
+        {
+            var client = new CelestialBodyClient(new AndromedaCelestialBodyFactory());
+            var star = client.GetStar();
+            var planet = client.GetPlanet();
+            Assert.IsType<SuperEarth>(planet);
+            Assert.IsType<NeutronStar>(star);
         }
     }
 }
