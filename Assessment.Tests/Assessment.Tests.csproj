@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Assessment1\Assessment1.csproj" />
+    <ProjectReference Include="..\Assessment2\Assessment2.csproj" />
   </ItemGroup>
 
 </Project>
