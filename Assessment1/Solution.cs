@@ -9,7 +9,7 @@ namespace Assessment1
     {
         public static int GetMissingDigitFromOrderedArray(int[] inputArr)
         {
-            int ans = 100;
+            int ans = inputArr.Length + 1;
             for (int i = 0; i < inputArr.Length; i++)
             {
                 if (inputArr[i] != i + 1)
