@@ -31,9 +31,12 @@ namespace MarsRoverTechChallenge.Services
 
         public void SendRover(MarsRover rover)
         {
-            if (rover.Location.X > XLimit || rover.Location.Y > YLimit)
+            if (rover.Location.X > XLimit 
+                || rover.Location.Y > YLimit
+                || rover.Location.X < 0
+                || rover.Location.Y < 0)
             {
-                throw new InvalidOperationException("rover is out of mars plateau bounds.");
+                throw new InvalidOperationException("Rover is out of bounds.");
             }
             rover.MaxLocation = new RoverLocation(XLimit, YLimit);
             _rover = rover;

@@ -19,7 +19,7 @@ namespace MarsRoverTechChallenge.Services
             var input = initialLocationAndHeading.Split(' ');
             if (input.Length != 3)
             {
-                throw new ArgumentException("invalid plateau bounds");
+                throw new ArgumentException("Invalid plateau bounds");
             }
             if (int.TryParse(input[0], out int x))
             {
@@ -86,15 +86,31 @@ namespace MarsRoverTechChallenge.Services
                     switch (Heading)
                     {
                         case 'N':
+                            if (Location.Y + 1 > MaxLocation.Y)
+                            {
+                                throw new InvalidOperationException("The instruction will lead the rover out of bounds");
+                            }
                             Location.Y += 1;
                             break;
                         case 'S':
+                            if (Location.Y - 1 < 0)
+                            {
+                                throw new InvalidOperationException("The instruction will lead the rover out of bounds");
+                            }
                             Location.Y -= 1;
                             break;
                         case 'E':
+                            if (Location.X + 1 > MaxLocation.X)
+                            {
+                                throw new InvalidOperationException("The instruction will lead the rover out of bounds");
+                            }
                             Location.X += 1;
                             break;
                         case 'W':
+                            if (Location.X - 1 < 0)
+                            {
+                                throw new InvalidOperationException("The instruction will lead the rover out of bounds");
+                            }
                             Location.X -= 1;
                             break;
                     }
@@ -107,10 +123,6 @@ namespace MarsRoverTechChallenge.Services
                     break;
                 default:
                     break;
-            }
-            if (Location.X > MaxLocation.X || Location.Y > MaxLocation.Y)
-            {
-                throw new InvalidOperationException("Rover out of bounds");
             }
         }
     }
